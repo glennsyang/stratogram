@@ -1,9 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Stratogram.ca`,
-    description: `STRATO: layer, coating, sheet, film; stratus; a combining form; word-forming element referring to layers or layering, from Latin "a spreading". GRAM: something written or recorded in a special way; from Greek ‘thing written, a letter of the alphabet';
-denoting a novelty message.`,
-    author: `@glennsheppard.dev`,
+    title: `Stratogram`,
+    description: `STRATO: layer, coating, sheet, film; stratus; a combining form; word-forming element referring to layers or layering, from Latin 'a spreading'. GRAM: something written or recorded in a special way; from Greek 'thing written, a letter of the alphabet' denoting a novelty message.`,
+    author: `@gsheppard.yang`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
