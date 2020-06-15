@@ -1,14 +1,26 @@
-import React from "react"
+import React from "react";
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import abductionIllustration from "../images/404_image.svg";
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+function NotFoundPage() {
+  return (
+    <Layout>
+      <SEO
+        title="404: Not found"
+      />
+      <div className="bg-white">
+        <img
+          src={abductionIllustration}
+          className="block mx-auto w-1/2"
+          alt="Ghost getting abducted by aliens"
+        />
+        <h2 className="bg-yellow-400 text-2xl font-bold text-center p-3">
+          Looks like this page is a ghost that got abducted by aliens...
+        </h2>
+      </div>
+    </Layout>
+  );
+}
 
-const NotFoundPage = () => (
-  <Layout>
-    <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </Layout>
-)
-
-export default NotFoundPage
+export default NotFoundPage;
