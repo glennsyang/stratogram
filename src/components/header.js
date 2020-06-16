@@ -6,11 +6,11 @@ const Header = () => {
   const { title } = useSiteMetadata()
 
   return (
-    <header className="w-full sticky shadow top-0 z-50 bg-blue-400">
+    <header className="w-full sticky shadow-sm top-0 z-50 bg-white">
       <div className="w-full container mx-auto sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3 sticky">
         <div className="flex items-center justify-between px-4 py-3 sm:p-0">
           <h1>
-            <Link to="/" className="text-3xl font-bold">{title}</Link>
+            <Link to="/" className="text-3xl font-extrabold">{title}</Link>
           </h1>
         </div>
         <nav className="">
