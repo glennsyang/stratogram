@@ -25,7 +25,6 @@ const IndexPage = () => {
               GRAM:<span className="pl-1 font-normal italic">something written or recorded in a special way; from Greek 'thing written, a letter of the alphabet' denoting a novelty message.</span>
             </p>
           </div>
-
         </div>
       </section>
 
