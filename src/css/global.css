@@ -1,9 +1,5 @@
-
-.hero-image {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/rock-formation.jpg");
-    height: 50%;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-}
+@font-face {
+    font-family: "Modern Space";
+    font-weight: 400;
+    src: url("/src/fonts/MODERN SPACE.otf") format("woff");
+} 

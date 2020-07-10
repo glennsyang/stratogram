@@ -2,14 +2,14 @@ import React from "react"
 import { StaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image"
 
-const ImageFixed = ({ props }) => (
-    <StaticQuery
-        query={graphql`
+const ImageFixed = ({ imgName, imgAlt, imgClass }) => (
+  <StaticQuery
+    query={graphql`
       query {
         allImageSharp {
           edges {
             node {
-              fixed {
+              fixed(height: 200) {
                 ...GatsbyImageSharpFixed
                 originalName
               }
@@ -18,16 +18,16 @@ const ImageFixed = ({ props }) => (
         }
       }
     `}
-        render={data => {
-            const image = data.allImageSharp.edges.find(
-                edge => edge.node.fixed.originalName === props.imgName
-            )
-            if (!image) {
-                console.log("ImageFixed return null")
-                return null
-            }
-            return <Img fixed={image.node.fixed} alt={props.imgAlt} className={props.imgClass} />
-        }}
-    />
+    render={data => {
+      const image = data.allImageSharp.edges.find(
+        edge => edge.node.fixed.originalName === imgName
+      )
+      if (!image) {
+        console.log("ImageFixed return null")
+        return null
+      }
+      return <Img fixed={image.node.fixed} alt={imgAlt} className={imgClass} />
+    }}
+  />
 )
 export default ImageFixed

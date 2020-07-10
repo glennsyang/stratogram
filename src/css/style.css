@@ -13,7 +13,7 @@
 
 /**
  * This injects any component classes registered by plugins.
- *
+ * src: url('/src/fonts/MODERNSPACE-400.otf') format("otf")
  * If using `postcss-import`, use this import instead:
  *
  * @import "tailwindcss/components";
