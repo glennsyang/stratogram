@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import { useSiteMetadata } from "../hooks/use-site-metadata"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Img from "gatsby-image"
+//import Img from "gatsby-image"
 //import ImageFluid from "../components/imagefluid"
 import ImageFixed from "../components/imagefixed"
 
@@ -93,7 +93,6 @@ const IndexPage = ({ data }) => {
 
       <section id="two" className="px-4 py-6">
         <div className="flex flex-row justify-around bg-white">
-          <Img fluid={data.file.childImageSharp.fluid} alt="A corgi smiling happily" />
           <ImageFixed imgName="Photo Icon.jpg" imgAlt="Photo Icon" imgClass="h-48 w-full object-contain bg-blue-100" />
           <ImageFixed imgName="Audio Icon.jpg" imgAlt="Audio Icon" imgClass="h-full w-full object-cover bg-red-100" />
           <ImageFixed imgName="Video Icon.jpg" imgAlt="Video Icon" imgClass="h-full w-full object-cover bg-purple-100" />
@@ -105,7 +104,6 @@ const IndexPage = ({ data }) => {
         <h2 className="text-6xl font-black text-white">
           Portfolio
         </h2>
-        <Img />
       </section>
 
     </Layout>
