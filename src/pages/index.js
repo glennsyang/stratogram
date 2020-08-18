@@ -4,8 +4,9 @@ import { useSiteMetadata } from "../hooks/use-site-metadata"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 //import Img from "gatsby-image"
-//import ImageFluid from "../components/imagefluid"
+import ImageFluid from "../components/imagefluid"
 import ImageFixed from "../components/imagefixed"
+import honeycomb_image from "../images/Honeycomb Layer Small.png"
 
 const IndexPage = ({ data }) => {
   const { title } = useSiteMetadata()
@@ -14,19 +15,18 @@ const IndexPage = ({ data }) => {
     <Layout>
       <SEO title="Home" />
 
-      <section id="hero" className="flex items-center bg-gray-200">
-        <div className="flex flex-col w-full max-w-3xl xl:mwx-w-5xl mx-auto bg-blue-100">
-          <h2 className="text-2xl font-hairline tracking-widest text-center">
-            S_G
-          </h2>
-          <h3 className="text-xl font-hairline tracking-widest text-strato-blue text-center">
-            STRAGEGIC_DESIGN
-          </h3>
+      <section id="hero" className="bg-white hero-image">
+        <div className="flex flex-row justify-evenly p-4 max-w-6xl mx-auto">
+          <ImageFixed imgName="Strato_Gram Lettering Minimalist (S only).jpg" imgAlt="Letter S" />
+          <ImageFixed imgName="Strato_Gram Lettering Minimalist (G only).jpg" imgAlt="Letter G" />
         </div>
+        <h1 className="text-xl font-hairline tracking-widest text-strato-blue text-center">
+          STRAGEGIC_DESIGN
+        </h1>
       </section>
 
       <section id="one">
-        <div className="flex flex-row bg-white">
+        <div className="flex flex-row justify-evenly container mx-auto">
 
           <div className="p-8 text-center text-strato-gray leading-tight">
             <h2 className="text-2xl font-hairline tracking-widest uppercase mb-8">
@@ -63,8 +63,19 @@ const IndexPage = ({ data }) => {
             </p>
           </div>
 
-          <div className="bg-blue-600 px-10">
-
+          <div className="flex blueprint-image pl-10 pr-20">
+            <div className="mt-20">
+              <img src={honeycomb_image} alt="Honeycomb" className="h-40" />
+              <img src={honeycomb_image} alt="Honeycomb" className="h-40 -mt-3 -ml-2" />
+            </div>
+            <div className="-ml-20 mt-4">
+              <img src={honeycomb_image} alt="Honeycomb" className="h-40" />
+            </div>
+            <div className="-ml-20 mt-20">
+              <img src={honeycomb_image} alt="Honeycomb" className="h-40" />
+              <img src={honeycomb_image} alt="Honeycomb" className="h-40 -ml-16 -mt-6" />
+              <img src={honeycomb_image} alt="Honeycomb" className="h-40 -ml-4 -mt-10" />
+            </div>
           </div>
 
           <div className="p-8 text-center text-strato-gray leading-tight">
