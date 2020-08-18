@@ -1,12 +1,25 @@
-import React from "react"
-import { graphql } from "gatsby"
-import { useSiteMetadata } from "../hooks/use-site-metadata"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import React from 'react'
+import { graphql } from 'gatsby'
+import { motion } from 'framer-motion'
+import { useSiteMetadata } from '../hooks/use-site-metadata'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
 //import Img from "gatsby-image"
-import ImageFluid from "../components/imagefluid"
-import ImageFixed from "../components/imagefixed"
-import honeycomb_image from "../images/Honeycomb Layer Small.png"
+//import ImageFluid from '../components/imagefluid'
+import ImageFixed from '../components/imagefixed'
+import honeycomb_image from '../images/Honeycomb Layer Small.png'
+
+const mainVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delay: 1.3,
+      duration: 2.4,
+      ease: "easeInOut",
+    }
+  },
+}
 
 const IndexPage = ({ data }) => {
   const { title } = useSiteMetadata()
@@ -17,18 +30,38 @@ const IndexPage = ({ data }) => {
 
       <section id="hero" className="bg-white hero-image">
         <div className="flex flex-row justify-evenly p-4 max-w-6xl mx-auto">
-          <ImageFixed imgName="Strato_Gram Lettering Minimalist (S only).jpg" imgAlt="Letter S" />
-          <ImageFixed imgName="Strato_Gram Lettering Minimalist (G only).jpg" imgAlt="Letter G" />
+          <motion.div
+            initial={{ x: '-100vw' }}
+            animate={{ x: 0 }}
+            transition={{ delay: 0.3, duration: 1.5 }}
+          >
+            <ImageFixed imgName="Strato_Gram Lettering Minimalist (S only).jpg" imgAlt="Letter S" />
+          </motion.div>
+          <motion.div
+            initial={{ x: '100vw' }}
+            animate={{ x: 0 }}
+            transition={{ delay: 0.3, duration: 1.5 }}
+          >
+            <ImageFixed imgName="Strato_Gram Lettering Minimalist (G only).jpg" imgAlt="Letter G" />
+          </motion.div>
         </div>
-        <h1 className="text-xl font-hairline tracking-widest text-strato-blue text-center">
+        <motion.h1 className="text-xl font-bold tracking-widest text-strato-blue text-center"
+          initial={{ position: 'relative', top: -250 }}
+          animate={{ top: -10 }}
+          transition={{ delay: 0.2, duration: 1.8 }}
+        >
           STRAGEGIC_DESIGN
-        </h1>
+        </motion.h1>
       </section>
 
       <section id="one">
         <div className="flex flex-row justify-evenly container mx-auto">
 
-          <div className="p-8 text-center text-strato-gray leading-tight">
+          <motion.div className="p-8 text-center text-strato-gray leading-tight"
+            initial={{ x: '-100vw' }}
+            animate={{ x: 0 }}
+            transition={{ delay: 0.3, duration: 1.5 }}
+          >
             <h2 className="text-2xl font-hairline tracking-widest uppercase mb-8">
               {title}
             </h2>
@@ -61,9 +94,13 @@ const IndexPage = ({ data }) => {
             <p className="text-xl font-hairline tracking-wide">
               THAT DELIVERS YOUR MESSAGE
             </p>
-          </div>
+          </motion.div>
 
-          <div className="flex blueprint-image pl-10 pr-20">
+          <motion.div className="flex blueprint-image pl-10 pr-20"
+            variants={mainVariants}
+            initial="hidden"
+            animate="visible"
+          >
             <div className="mt-20">
               <img src={honeycomb_image} alt="Honeycomb" className="h-40" />
               <img src={honeycomb_image} alt="Honeycomb" className="h-40 -mt-3 -ml-2" />
@@ -76,9 +113,13 @@ const IndexPage = ({ data }) => {
               <img src={honeycomb_image} alt="Honeycomb" className="h-40 -ml-16 -mt-6" />
               <img src={honeycomb_image} alt="Honeycomb" className="h-40 -ml-4 -mt-10" />
             </div>
-          </div>
+          </motion.div>
 
-          <div className="p-8 text-center text-strato-gray leading-tight">
+          <motion.div className="p-8 text-center text-strato-gray leading-tight"
+            initial={{ x: '100vw' }}
+            animate={{ x: 0 }}
+            transition={{ delay: 0.3, duration: 1.5 }}
+          >
             <h2 className="text-2xl font-hairline tracking-widest mb-12">
               STRATO_
             </h2>
@@ -97,7 +138,7 @@ const IndexPage = ({ data }) => {
             <p className="text-xl font-hairline tracking-wide">
               A UNIQUE MESSAGE
             </p>
-          </div>
+          </motion.div>
 
         </div>
       </section>
