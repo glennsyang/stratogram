@@ -33,14 +33,14 @@ const IndexPage = ({ data }) => {
           <motion.div
             initial={{ x: '-100vw' }}
             animate={{ x: 0 }}
-            transition={{ delay: 0.3, duration: 1.5 }}
+            transition={{ delay: 0.2, duration: 1.5 }}
           >
             <ImageFixed imgName="Strato_Gram Lettering Minimalist (S only).jpg" imgAlt="Letter S" />
           </motion.div>
           <motion.div
             initial={{ x: '100vw' }}
             animate={{ x: 0 }}
-            transition={{ delay: 0.3, duration: 1.5 }}
+            transition={{ delay: 0.2, duration: 1.5 }}
           >
             <ImageFixed imgName="Strato_Gram Lettering Minimalist (G only).jpg" imgAlt="Letter G" />
           </motion.div>
@@ -48,7 +48,7 @@ const IndexPage = ({ data }) => {
         <motion.h1 className="text-xl font-bold tracking-widest text-strato-blue text-center"
           initial={{ position: 'relative', top: -250 }}
           animate={{ top: -10 }}
-          transition={{ delay: 0.2, duration: 1.8 }}
+          transition={{ delay: 0.1, duration: 1.8 }}
         >
           STRAGEGIC_DESIGN
         </motion.h1>
