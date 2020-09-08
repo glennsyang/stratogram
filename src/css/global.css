@@ -1,0 +1,21 @@
+@font-face {
+    font-family: "Modern Space";
+    font-weight: 400;
+    src: url("/src/fonts/MODERN SPACE.otf") format("woff");
+} 
+
+.hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("../images/Hexagon Background.jpg");
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left 10%;
+    
+}
+.blueprint-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("../images/Texture Background Blueprint.jpg");
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: contain;
+}

@@ -1,9 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Stratogram.ca`,
-    description: `STRATO: layer, coating, sheet, film; stratus; a combining form; word-forming element referring to layers or layering, from Latin "a spreading". GRAM: something written or recorded in a special way; from Greek ‘thing written, a letter of the alphabet';
-denoting a novelty message.`,
-    author: `@glennsheppard.dev`,
+    title: `Strato_gram`,
+    description: `STRATO: layer, coating, sheet, film; stratus; a combining form; word-forming element referring to layers or layering, from Latin 'a spreading'. GRAM: something written or recorded in a special way; from Greek 'thing written, a letter of the alphabet' denoting a novelty message.`,
+    author: `@gsheppard.yang`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -27,6 +26,14 @@ denoting a novelty message.`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
+    },
+    `gatsby-plugin-postcss`,
+    {
+      resolve: "gatsby-plugin-purgecss",
+      options: {
+        tailwind: true,
+        purgeOnly: ["src/css/style.css", "src/css/global.css"]
+      }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
