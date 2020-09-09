@@ -27,7 +27,8 @@ jobs:
           remote_host: ${{ secrets.SERVER_IP }}
           remote_user: ${{ secrets.SERVER_USER }}
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
-        run: mkdir ~/.ssh
-        run: echo "$remote_key" > ~/.ssh/gh_actions_key
-        run: chmod 600 ~/.ssh/gh_actions_key
-        run: rsync -avzh --delete "ssh -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no" public/* ${remote_user}@${remote_host}:/var/www/stratogram.ca/html
+        run: |
+          mkdir ~/.ssh
+          echo "$remote_key" > ~/.ssh/gh_actions_key
+          chmod 600 ~/.ssh/gh_actions_key
+          rsync -avzh --delete "ssh -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no" public/* ${remote_user}@${remote_host}:/var/www/stratogram.ca/html
