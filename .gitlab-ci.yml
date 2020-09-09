@@ -40,3 +40,8 @@ deployGatsby:
   - chmod 644 ~/.ssh/known_hosts
   - rsync -avzh --delete public/* $SERVER_USER@$SERVER_IP:/var/www/stratogram.ca/html
   
+  # 3. https://github.com/actions/setup-node#usage
+      #- uses: actions/setup-node@master
+      #  with:
+      #  node-version: 10.x
+      
