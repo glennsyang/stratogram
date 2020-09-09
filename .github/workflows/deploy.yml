@@ -27,7 +27,7 @@ jobs:
       - name: SSH Add
         env:
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - run: ssh-add <(echo ${remote_key} | base64 --decode)
+        run: ssh-add <(echo ${remote_key} | base64 --decode)
       - name: Secure dir
         run: | 
           mkdir -p ~/.ssh
