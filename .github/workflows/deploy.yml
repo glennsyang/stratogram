@@ -13,7 +13,7 @@ jobs:
     
     steps:
       # Check out the current repository code
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Set Node.js
         uses: actions/setup-node@master
         with:
