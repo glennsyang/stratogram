@@ -24,20 +24,14 @@ jobs:
         run: yarn run build
       - name: Make dir
         run: mkdir -p ~/.ssh
-      #- name: create file
-      #  env:
-      #    remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
-      #  run: echo "$remote_key" > ~/.ssh/gh_actions_key
       - name: SSH Add
         env:
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
       - run: ssh-add <(echo ${remote_key} | base64 --decode)
-      # Inject the remote's private key
       - name: Secure dir
         run: | 
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
-      # Append keyscan output into known hosts
       - name: Keyscan
         env:
           remote_host: ${{ secrets.SERVER_IP }}
