@@ -22,11 +22,6 @@ jobs:
         run: yarn install
       - name: Build
         run: yarn run build
-      - name: Deploy
-        env:
-          remote_host: ${{ secrets.SERVER_IP }}
-          remote_user: ${{ secrets.SERVER_USER }}
-          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Make dir
         run: mkdir ~/.ssh
       - name: create file
