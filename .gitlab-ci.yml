@@ -45,3 +45,10 @@ deployGatsby:
       #  with:
       #  node-version: 10.x
       
+      - name: secure file
+        run: chmod 600 ~/.ssh/gh_actions_key
+      - name: Send files to server
+        env:
+          remote_host: ${{ secrets.SERVER_IP }}
+          remote_user: ${{ secrets.SERVER_USER }}
+        run: rsync -avzh --delete "ssh -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no" public/* ${remote_user}@${remote_host}:/var/www/stratogram.ca/html
