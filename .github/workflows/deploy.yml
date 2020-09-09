@@ -10,16 +10,28 @@ jobs:
   build:
     # 2. Using the latest Ubuntu image
     runs-on: ubuntu-latest
-
+    
     steps:
       # Check out the current repository code
       - uses: actions/checkout@v1
+      - name: yarn install and build
+        env:
+          remote_host: ${{ secrets.SERVER_IP }}
+          remote_user: ${{ secrets.SERVER_USER }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
       # 3. https://github.com/actions/setup-node#usage
-      - uses: actions/setup-node@master
-        with:
-          node-version: 10.x
-      - run: yarn install
+      #- uses: actions/setup-node@master
+      #  with:
+      #    node-version: 10.x
+      run: |
+        yarn install
       # This triggers `gatsby build` script in "package.json"
-      - run: yarn run build
+        yarn run build
       # 4. Deploy the gatsby build to Netlify
-      
+        mkdir ~/.ssh
+        echo "$remote_key" > ~/.ssh/gh_actions_key
+        chmod 600 ~/.ssh/gh_actions_key
+        rsync -avzh --delete "ssh -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no" public/* ${remote_user}@${remote_host}:/var/www/stratogram.ca/html"
+
+        # - rsync -avzh --delete public/* $SERVER_USER@$SERVER_IP:/var/www/stratogram.ca/html
+        
