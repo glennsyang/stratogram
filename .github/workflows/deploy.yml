@@ -23,15 +23,30 @@ jobs:
       - name: Build
         run: yarn run build
       - name: Make dir
-        run: mkdir ~/.ssh
-      - name: create file
+        run: mkdir -p ~/.ssh
+      #- name: create file
+      #  env:
+      #    remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+      #  run: echo "$remote_key" > ~/.ssh/gh_actions_key
+      - name: SSH Add
         env:
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
-        run: echo "$remote_key" > ~/.ssh/gh_actions_key
-      - name: secure file
-        run: chmod 600 ~/.ssh/gh_actions_key
-      - name: Send files to server
+      - run: ssh-add <(echo ${remote_key} | base64 --decode)
+      # Inject the remote's private key
+      - name: Secure dir
+        run: | 
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+      # Append keyscan output into known hosts
+      - name: Keyscan
+        env:
+          remote_host: ${{ secrets.SERVER_IP }}
+        run: ssh-keyscan ${remote_host} >> ~/.ssh/known_hosts
+      - name: Secure file
+        run: chmod 644 ~/.ssh/known_hosts
+      - name: Deploy to server
         env:
           remote_host: ${{ secrets.SERVER_IP }}
           remote_user: ${{ secrets.SERVER_USER }}
-        run: rsync -avzh --delete "ssh -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no" public/* ${remote_user}@${remote_host}:/var/www/stratogram.ca/html
+        run: rsync -avzh --delete public/* ${remote_user}@${remote_host}:/var/www/stratogram.ca/html
+  
