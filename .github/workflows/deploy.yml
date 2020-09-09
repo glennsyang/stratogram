@@ -27,7 +27,7 @@ jobs:
       - name: create file
         env:
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
-        run: echo ("$remote_key" | base64 --decode) > ~/.ssh/gh_actions_key
+        run: echo "$remote_key" | base64 --decode > ~/.ssh/gh_actions_key
       - name: secure file
         run: chmod 600 ~/.ssh/gh_actions_key
       - name: Send files to server
