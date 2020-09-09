@@ -21,9 +21,7 @@ jobs:
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
         run:
           yarn install
-          # This triggers `gatsby build` script in "package.json"
           yarn run build
-          # 4. Deploy the gatsby build to Netlify
           mkdir ~/.ssh
           echo "$remote_key" > ~/.ssh/gh_actions_key
           chmod 600 ~/.ssh/gh_actions_key
