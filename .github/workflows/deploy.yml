@@ -14,14 +14,20 @@ jobs:
     steps:
       # Check out the current repository code
       - uses: actions/checkout@v1
-      - name: yarn install and build
+      - name: Set Node.js
+        uses: actions/setup-node@master
+        with:
+          node-version: 10.x
+      - name: Install Dependencies
+        run: yarn install
+      - name: Build
+        run: yarn run build
+      - name: Deploy
         env:
           remote_host: ${{ secrets.SERVER_IP }}
           remote_user: ${{ secrets.SERVER_USER }}
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
         run:
-          yarn install
-          yarn run build
           mkdir ~/.ssh
           echo "$remote_key" > ~/.ssh/gh_actions_key
           chmod 600 ~/.ssh/gh_actions_key
