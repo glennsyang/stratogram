@@ -74,17 +74,6 @@ const IndexPage = ({ data }) => {
             <p className="text-xl font-hairline tracking-wide">
               FOR YOU
             </p>
-            <ul className="text-xl font-hairline tracking-wide leading-none my-4">
-              <li>ORIGINAL PHOTOGRAPHY</li>
-              <li>MUSIC PRODUCTION</li>
-              <li>AUDIO ENGINEERING</li>
-              <li>VOICE OVER</li>
-              <li>VIDEOGRPAHY</li>
-              <li>ANIMATION</li>
-              <li>VIDEO EDITING</li>
-              <li>COPYWRITING</li>
-              <li>SCRIPT WRITING</li>
-            </ul>
             <p className="text-xl font-hairline tracking-wide">
               WE COMBINE THESE FORMS
             </p>
