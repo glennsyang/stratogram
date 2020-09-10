@@ -1,4 +1,4 @@
-name: Deploy Site
+name: Build & Deploy Site
 
 on:
   # 1. Trigger the workflow
@@ -14,15 +14,19 @@ jobs:
     steps:
       # Check out the current repository code
       - uses: actions/checkout@v2
+      # Install node
       - name: Set Node.js
         uses: actions/setup-node@master
         with:
           node-version: 10.x
+      # Install all dependencies needed
       - name: Install Dependencies
         run: yarn install
-      - name: Build
+      # Build the Gatsby site
+      - name: Gatsby Build
         run: yarn run build
-      - name: Rsync deployments
+      # Sync the built files to the remote server
+      - name: Rsync deployment
         uses: burnett01/rsync-deployments@4.1
         with:
           switches: -avzh --delete
