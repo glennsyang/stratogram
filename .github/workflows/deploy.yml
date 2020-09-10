@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: 10.x
       #- name: Install Dependencies
-      #  run: yarn install
+      #  run: yarn insta
       #- name: Build
       #  run: yarn run build
       - name: Echo key
