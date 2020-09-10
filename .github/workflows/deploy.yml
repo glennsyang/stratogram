@@ -23,7 +23,7 @@ jobs:
       #- name: Build
       #  run: yarn run build
       - name: Echo key
-        run: echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 --decode
+        run: echo "${{ secrets.SSH_PRIVATE_KEY }}"
       - name: rsync deployments
         uses: burnett01/rsync-deployments@4.1
         with:
