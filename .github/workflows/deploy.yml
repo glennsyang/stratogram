@@ -18,13 +18,11 @@ jobs:
         uses: actions/setup-node@master
         with:
           node-version: 10.x
-      #- name: Install Dependencies
-      #  run: yarn insta
-      #- name: Build
-      #  run: yarn run build
-      - name: Echo key
-        run: echo "${{ secrets.SSH_PRIVATE_KEY }}"
-      - name: rsync deployments
+      - name: Install Dependencies
+        run: yarn install
+      - name: Build
+        run: yarn run build
+      - name: Rsync deployments
         uses: burnett01/rsync-deployments@4.1
         with:
           switches: -avzh --delete
