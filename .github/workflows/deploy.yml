@@ -32,4 +32,4 @@ jobs:
           remote_path: /var/www/stratogram.ca/html
           remote_host: ${{ secrets.SERVER_IP }}
           remote_user: ${{ secrets.SERVER_USER }}
-          remote_key: echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 --decode
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
