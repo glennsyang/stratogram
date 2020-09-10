@@ -77,4 +77,7 @@ deployGatsby:
           remote_host: ${{ secrets.SERVER_IP }}
           remote_user: ${{ secrets.SERVER_USER }}
         run: rsync -avzh --delete public/* ${remote_user}@${remote_host}:/var/www/stratogram.ca/html
-  
+
+ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}" | base64 --decode
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
