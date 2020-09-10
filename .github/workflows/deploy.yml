@@ -1,4 +1,4 @@
-name: Deploy Site
+name: Build & Deploy Site
 
 on:
   # 1. Trigger the workflow
@@ -10,16 +10,28 @@ jobs:
   build:
     # 2. Using the latest Ubuntu image
     runs-on: ubuntu-latest
-
+    
     steps:
       # Check out the current repository code
-      - uses: actions/checkout@v1
-      # 3. https://github.com/actions/setup-node#usage
-      - uses: actions/setup-node@master
+      - uses: actions/checkout@v2
+      # Install node
+      - name: Set Node.js
+        uses: actions/setup-node@master
         with:
           node-version: 10.x
-      - run: yarn install
-      # This triggers `gatsby build` script in "package.json"
-      - run: yarn run build
-      # 4. Deploy the gatsby build to Netlify
-      
+      # Install all dependencies needed
+      - name: Install Dependencies
+        run: yarn install
+      # Build the Gatsby site
+      - name: Gatsby Build
+        run: yarn run build
+      # Sync the built files to the remote server
+      - name: Rsync deployment
+        uses: burnett01/rsync-deployments@4.1
+        with:
+          switches: -avzh --delete
+          path: public/
+          remote_path: /var/www/stratogram.ca/html
+          remote_host: ${{ secrets.SERVER_IP }}
+          remote_user: ${{ secrets.SERVER_USER }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
