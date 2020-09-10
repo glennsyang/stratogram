@@ -1,3 +1,4 @@
+<img src="/src/images/Stratogram Splash Screen.jpg" alt="Stratogram Logo" height="128" />
 
 # Stratogram.ca
 
@@ -16,11 +17,11 @@ GRAM: something written or recorded in a special way; from Greek 'thing written,
 
 [Tailwind-CSS](https://tailwindcss.com)
 
+[Framer Motion](https://www.framer.com/motion)
+
 ## Status
 
-[![pipeline status](https://gitlab.com/gsheppard.yang/stratogram/badges/release/pipeline.svg)](https://gitlab.com/gsheppard.yang/stratogram/-/commits/release)
-
-[![coverage report](https://gitlab.com/gsheppard.yang/stratogram/badges/release/coverage.svg)](https://gitlab.com/gsheppard.yang/stratogram/-/commits/release)
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/glennsyang/stratogram/Build%20&%20Deploy%20Site/release) ![David](https://img.shields.io/david/dev/glennsyang/stratogram) [![HitCount](http://hits.dwyl.com/glennsyang/stratogram.svg)](http://hits.dwyl.com/glennsyang/stratogram)
 
 ## Author
 
