@@ -24,16 +24,13 @@ jobs:
       #  run: yarn run build
       - name: Echo key
         run: echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 --decode
-      - name: Make dir
-        run: |
-          echo ${{ secrets.SSH_PRIVATE_KEY }}" | base64 --decode > ~/.ssh/gh_actions_key
-          chmod 600 ~/.ssh/gh_actions_key
-      - name: Keyscan file
-        run: | 
-          ssh-keyscan "${{ secrets.SERVER_IP }}" >> ~/.ssh/known_hosts
-          chmod 644 ~/.ssh/known_hosts
-      - name: Send files to server
-        env:
-          remote_user: ${{ secrets.SERVER_USER }}
+      - name: rsync deployments
+        uses: burnett01/rsync-deployments@4.1
+        with:
+          switches: -avzh --delete
+          path: public/
+          remote_path: /var/www/stratogram.ca/html
           remote_host: ${{ secrets.SERVER_IP }}
-        run: rsync -avzh --delete -e "ssh -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no" public/* ${remote_user}@${remote_host}:/var/www/stratogram.ca/html
+          remote_user: ${{ secrets.SERVER_USER }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          
