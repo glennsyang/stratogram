@@ -21,11 +21,7 @@ GRAM: something written or recorded in a special way; from Greek 'thing written,
 
 ## Status
 
-![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/glennsyang/stratogram/Build%20&%20Deploy%20Site/release)
-
-![David](https://img.shields.io/david/dev/glennsyang/stratogram)
-
-[![HitCount](http://hits.dwyl.com/glennsyang/stratogram.svg)](http://hits.dwyl.com/glennsyang/stratogram)
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/glennsyang/stratogram/Build%20&%20Deploy%20Site/release) ![David](https://img.shields.io/david/dev/glennsyang/stratogram) [![HitCount](http://hits.dwyl.com/glennsyang/stratogram.svg)](http://hits.dwyl.com/glennsyang/stratogram)
 
 ## Author
 
