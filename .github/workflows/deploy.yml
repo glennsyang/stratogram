@@ -23,14 +23,11 @@ jobs:
       #- name: Build
       #  run: yarn run build
       - name: Echo key
-        run: echo "${{ secrets.SSH_PRIVATE_KEY }}"
-      - name: Echo other key
         run: echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 --decode
       - name: Make dir
-        run: | 
-          ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}" | base64 --decode
-          mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
+        run: |
+          echo ${{ secrets.SSH_PRIVATE_KEY }}" | base64 --decode > ~/.ssh/gh_actions_key
+          chmod 600 ~/.ssh/gh_actions_key
       - name: Keyscan file
         run: | 
           ssh-keyscan "${{ secrets.SERVER_IP }}" >> ~/.ssh/known_hosts
@@ -39,4 +36,4 @@ jobs:
         env:
           remote_user: ${{ secrets.SERVER_USER }}
           remote_host: ${{ secrets.SERVER_IP }}
-        run: rsync -avzh --delete public/* ${remote_user}@${remote_host}:/var/www/stratogram.ca/html
+        run: rsync -avzh --delete -e "ssh -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no" public/* ${remote_user}@${remote_host}:/var/www/stratogram.ca/html
